@@ -21,12 +21,12 @@ list(set=set,get=get, getInverse=getInverse,setInverse=setInverse)
 
 cacheSolve <- function(x, ...) {
           inv<-x$getInverse()
-if (!is.null(inv)){
-  message("getting cached data")
-  return(inv)
+if (!is.null(inv)){               ##checking if inverse of matrix is already computed 
+  message("getting cached data")  
+  return(inv)                    ##returns the cached data , if it is computed
 }
-  data<-x$get()
-  inv<-solve(data,...)
+  data<-x$get()                  
+  inv<-solve(data,...)          ##else, computes the inverse using solve function
   x$setInverse(inv)
   inv
 }
